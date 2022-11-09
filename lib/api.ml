@@ -22,4 +22,14 @@ module Contract = struct
     let base = base_url ?network () in
     base ^ "count"
   ;;
+
+  let get ?network ~offset ~limit () =
+    let base = base_url ?network () in
+    base ^ Format.asprintf "?offset=%d&limit=%d" offset limit
+  ;;
+
+  let views ?network ~address () =
+    let base = base_url ?network () in
+    base ^ address ^ "/views"
+  ;;
 end

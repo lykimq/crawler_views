@@ -28,3 +28,18 @@ dune exec src/crawler_views.exe -- count
 Will print on `stdout` the number of originated smart-contracts. You can add the
 parameter `--network=(main|ghost|kathmandu|jakarta)` for specifiying a network.
 (By default, `main` is given).
+
+```shellsession
+dune exec src/crawler_views.exe -- addresses --offset=NUM --limit=NUM
+```
+
+Will print on `stdout` the addresses of smart-contracts originated between
+`offset` and `offset + limit`. (As for `count`, you can specify the network).
+
+```shellsession
+dune exec src/crawler_views.exe -- compute
+```
+
+Will produce a file `network.csv` (the name depends on the given network)
+containing all addresses that holds views using this scheme:
+`address;number_of_views`. (As for `count`, you can specify the network).

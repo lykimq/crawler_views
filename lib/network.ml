@@ -38,3 +38,5 @@ let arg =
   let arg = Arg.info ~doc ~docs:Manpage.s_common_options [ "network" ] in
   Arg.(required & opt (some n_conv) (Some Main) & arg)
 ;;
+
+let compute_filename network = "./" ^ to_uri_fragment network ^ ".csv"
