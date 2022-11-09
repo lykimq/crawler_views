@@ -18,3 +18,13 @@ development dependencies (the second one is optional):
 make deps
 make dev-deps
 ```
+
+## Usage
+
+```shellsession
+dune exec src/crawler_views.exe -- count
+```
+
+Will print on `stdout` the number of originated smart-contracts. You can add the
+parameter `--network=(main|ghost|kathmandu|jakarta)` for specifiying a network.
+(By default, `main` is given).

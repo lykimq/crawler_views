@@ -1,0 +1,3 @@
+(executable
+ (name crawler_views)
+ (libraries lib cmdliner))

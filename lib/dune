@@ -1,0 +1,6 @@
+(library
+ (public_name crawler_views.lib)
+ (name lib)
+ (libraries cmdliner lwt yojson cohttp-lwt-unix)
+ (preprocess
+  (pps ppx_yojson_conv)))
