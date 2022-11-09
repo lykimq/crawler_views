@@ -1,3 +1,20 @@
 # crawler_views
 
-The source code in `src/crawler.js` written by Xavier Van de Woestyne.
+Collect statistics about [Tezos](https://tezos.com) views.
+
+## Initialize environment
+
+```shellsession
+opam update
+opam switch create . ocaml-base-compiler.4.14.0 --deps-only -y
+eval $(opam env)
+```
+
+When the local switch build procedure is complete you can simply run the
+following two commands to retrieve the project dependencies and to retrieve the
+development dependencies (the second one is optional):
+
+```shellsession
+make deps
+make dev-deps
+```
