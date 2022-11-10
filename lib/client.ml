@@ -58,7 +58,7 @@ module Contract = struct
           if len > 0
           then (
             let line = Format.asprintf "%d;%s;%d" id address len in
-            let* () = Lwt_io.print line in
+            let* () = Lwt_io.printl line in
             Lwt_io.write_line channel line)
           else Lwt.return ()
         in
@@ -80,10 +80,10 @@ module Contract = struct
     aux channel
   ;;
 
-  let compute ?network channel =
+  let compute ?network ~offset channel =
     let open Lwt.Syntax in
     let* total = count ?network () in
-    let steps = Util.steps ~total ~limit:100 () in
+    let steps = Util.steps ~total ~offset ~limit:100 () in
     collect_contracts ?network channel steps
   ;;
 end

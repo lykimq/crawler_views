@@ -29,6 +29,7 @@ module Contract : sig
 
   val compute
     :  ?network:Network.t
+    -> offset:int
     -> Lwt_io.output_channel
     -> Lwt_io.output_channel Lwt.t
 end

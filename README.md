@@ -42,4 +42,7 @@ dune exec src/crawler_views.exe -- compute
 
 Will produce a file `network.csv` (the name depends on the given network)
 containing all addresses that holds views using this scheme:
-`address;number_of_views`. (As for `count`, you can specify the network).
+`address;number_of_views`. (As for `count`, you can specify the network). You
+can also add the flag `--offset=NUM` in order to start to a specific offset. For
+`Mainnet`, it is recommanded to start with offset `67100` (because there is no
+views before).

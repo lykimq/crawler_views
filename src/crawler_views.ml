@@ -81,19 +81,21 @@ let action_compute =
   let doc = "Compute the number of views for each contracts" in
   let exits = Cmd.Exit.defaults in
   let info = Cmd.info "compute" ~doc ~exits in
-  let callback network =
+  let callback network offset =
     let open Lwt.Syntax in
     let filename = Lib.Network.compute_filename network in
     let* fd = Lwt_unix.openfile filename [ O_WRONLY; O_TRUNC; O_CREAT ] 0o777 in
     let channel = Lwt_io.of_fd ~mode:Output fd in
-    let* _ = Lib.Client.Contract.compute ~network channel in
+    let* _ = Lib.Client.Contract.compute ~network ~offset channel in
     let+ () = Lwt_unix.close fd in
     `Ok ()
   in
   let term =
     let open Term in
     ret
-      (const (fun network -> Lwt_main.run @@ callback network) $ Lib.Network.arg)
+      (const (fun network offset -> Lwt_main.run @@ callback network offset)
+      $ Lib.Network.arg
+      $ arg_offset)
   in
   Cmd.v info term
 ;;
